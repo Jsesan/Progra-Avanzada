@@ -34,17 +34,22 @@ public class Premio {
 		while (cantMaximos == 0) {
 			impMax = this.calcularImportes(vendedoras, importes);
 			cantMaximos = this.cantidadMaximos(importes, impMax);
-			if (cantMaximos == 1) { // hay ganador (buscarlo) devolver su posicion
-				return buscarPosicionGanador(importes, impMax);
+			if (cantMaximos == 1) { 
+				return buscarPosicionGanador(importes, impMax);//Posicion de la ganadora
 			} else if (cantMaximos > 1) { // Hubo empate se debe buscar las posiciones que no empataron y "quitarlas" de
 											// la competicion
 				cambiarParticipacion(impMax, vendedoras, importes);
-				cantMaximos = 0;
-				// falta validar si se puede desempatar en algun punto
+				if(this.siguenCompitiendo(importes)) {
+					cantMaximos = 0;
+					this.N++;
+				}
+				else {
+					return -2; //No se puede desempatar
+				}
 			}
 		}
 
-		return 0;
+		return -3; // ERROR
 	}
 
 	public boolean puedeHaberGanador(Vendedora[] vendedoras) {
@@ -97,6 +102,14 @@ public class Premio {
 				vendedoras[i].setParticipa(-1);
 			}
 		}
+	}
+
+	public boolean siguenCompitiendo(float[] importes) {
+		for (int i = 0; i < importes.length; i++) {
+			if (importes[i] != 0)
+				return true;
+		}
+		return false;
 	}
 
 }
