@@ -2,11 +2,17 @@ package Tienda;
 
 public class Vendedora {
 
-	private int[] resumenVentas;
+	private float[] resumenVentas;
 	private int cantVentas;
-	private int participa = 0; // Tomara 0 por defecto en caso de que clasifique a un desempate sera >0 y si
+	private int participa ; // Tomara 0 por defecto en caso de que
 								// esta descalificada sera -1
 
+	public Vendedora(float[] resumen) {
+		this.resumenVentas = resumen;
+		this.cantVentas = resumen.length;
+		this.participa = 0;
+	}
+	
 	public int getParticipa() {
 		return participa;
 	}
@@ -15,7 +21,7 @@ public class Vendedora {
 		this.participa = participa;
 	}
 
-	public int[] getResumenVenta() {
+	public float[] getResumenVenta() {
 		return resumenVentas;
 	}
 
@@ -23,7 +29,7 @@ public class Vendedora {
 		return cantVentas;
 	}
 
-	public void setResumenVenta(int[] resumenVenta) {
+	public void setResumenVenta(float[] resumenVenta) {
 		this.resumenVentas = resumenVenta;
 		this.cantVentas = resumenVenta.length;
 	}
