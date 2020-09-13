@@ -25,21 +25,21 @@ public class Premio {
 		this.N = ventasNecesarias;
 	}
 
-	public int buscarGanadora(Vendedora[] vendedoras, float importes[]) {
+	public int buscarGanadora(Vendedora[] vendedoras) {
 		float impMax = 0;
 		int cantMaximos = 0;
 		if (!this.puedeHaberGanador(vendedoras))
 			return -1; // No puede haber ganador
 
 		while (cantMaximos == 0) {
-			impMax = this.calcularImportes(vendedoras, importes);
-			cantMaximos = this.cantidadMaximos(importes, impMax);
+			impMax = this.calcularImportes(vendedoras);
+			cantMaximos = this.cantidadMaximos(vendedoras,impMax);
 			if (cantMaximos == 1) { 
-				return buscarPosicionGanador(importes, impMax);//Posicion de la ganadora
+				return buscarPosicionGanador(vendedoras, impMax);//Posicion de la ganadora
 			} else if (cantMaximos > 1) { // Hubo empate se debe buscar las posiciones que no empataron y "quitarlas" de
 											// la competicion
-				cambiarParticipacion(impMax, vendedoras, importes);
-				if(this.siguenCompitiendo(importes)) {
+				cambiarParticipacion(impMax, vendedoras);
+				if(this.siguenCompitiendo(vendedoras)) {
 					cantMaximos = 0;
 					this.N++;
 				}
@@ -61,52 +61,51 @@ public class Premio {
 		return false;
 	}
 
-	public float calcularImportes(Vendedora[] vendedoras, float[] importes) {
+	public float calcularImportes(Vendedora[] vendedoras) {
 		float impMax = 0;
 		for (int i = 0; i < vendedoras.length; i++) {
 			if (vendedoras[i].getParticipa() == 0) {
-				importes[i] = vendedoras[i].importeNMaximos(this.N);
-
-				if (importes[i] > impMax)
-					impMax = importes[i];
+				vendedoras[i].importeNMaximos(this.N);
+				if (vendedoras[i].getImporte() > impMax)
+					impMax = vendedoras[i].getImporte();
 			} else {
-				importes[i] = 0;
+				vendedoras[i].setImporte(0);
 			}
 		}
 
 		return impMax;
 	}
 
-	public int cantidadMaximos(float[] importes, float impMax) {
+	public int cantidadMaximos(Vendedora[] vendedoras, float impMax) {
 		int cantidad = 0;
 
-		for (int i = 0; i < importes.length; i++) {
-			if (importes[i] == impMax) {
+		for (int i = 0; i < vendedoras.length; i++) {
+			if (vendedoras[i].getImporte() == impMax) {
 				cantidad++;
 			}
 		}
 		return cantidad;
 	}
 
-	public int buscarPosicionGanador(float[] importes, float impMax) {
-		for (int i = 0; i < importes.length; i++) {
-			if (importes[i] == impMax)
+	public int buscarPosicionGanador(Vendedora[] vendedoras, float impMax) {
+		for (int i = 0; i < vendedoras.length; i++) {
+			if (vendedoras[i].getImporte() == impMax)
 				return i;
 		}
 		return -1; // Caso de falla (no deberia)
 	}
 
-	public void cambiarParticipacion(float impMax, Vendedora[] vendedoras, float[] importes) {
+	public void cambiarParticipacion(float impMax, Vendedora[] vendedoras) {
 		for (int i = 0; i < vendedoras.length; i++) {
-			if (impMax != importes[i]) {
+			if (impMax != vendedoras[i].getImporte()) {
 				vendedoras[i].setParticipa(-1);
 			}
 		}
 	}
 
-	public boolean siguenCompitiendo(float[] importes) {
-		for (int i = 0; i < importes.length; i++) {
-			if (importes[i] != 0)
+	public boolean siguenCompitiendo(Vendedora[] vendedoras) {
+		for (int i = 0; i < vendedoras.length; i++) {
+			if (vendedoras[i].getImporte() != 0)
 				return true;
 		}
 		return false;

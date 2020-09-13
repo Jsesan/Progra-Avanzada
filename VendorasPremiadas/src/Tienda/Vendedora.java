@@ -3,6 +3,7 @@ package Tienda;
 public class Vendedora {
 
 	private float[] resumenVentas;
+	private float importe;
 	private int cantVentas;
 	private int participa ; // Tomara 0 por defecto en caso de que
 								// esta descalificada sera -1
@@ -11,8 +12,23 @@ public class Vendedora {
 		this.resumenVentas = resumen;
 		this.cantVentas = resumen.length;
 		this.participa = 0;
+		this.importe= 0;
 	}
 	
+	
+	
+	public float getImporte() {
+		return importe;
+	}
+
+
+
+	public void setImporte(float importe) {
+		this.importe = importe;
+	}
+
+
+
 	public int getParticipa() {
 		return participa;
 	}
@@ -34,12 +50,12 @@ public class Vendedora {
 		this.cantVentas = resumenVenta.length;
 	}
 
-	public float importeNMaximos(int N) {
+	public void importeNMaximos(int N) {
 		float importe = 0, aux = 0;
 
 		if (this.cantVentas < N) {
 			this.setParticipa(-1); // Si no participa dado a que no tiene N
-			return 0; // ventas consecutivas su condicion es -1
+			return; // ventas consecutivas su condicion es -1
 		}
 
 		for (int i = 0; i < this.resumenVentas.length; i++) {
@@ -57,12 +73,8 @@ public class Vendedora {
 			}
 		}
 
-		return importe;
+		this.importe= importe;
 	}
 
-	public int comparar(Vendedora v2, int N) {
-		Float importe = importeNMaximos(N);
-		return importe.compareTo(v2.importeNMaximos(N));
-	}
 
 }

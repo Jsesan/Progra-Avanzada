@@ -13,25 +13,29 @@ class pruebasVendedora {
 	@Test
 	void testUno() {
 		Vendedora v1= new Vendedora(new float[] {15,1,6,4,9,10}) ;
-		assertEquals(29,v1.importeNMaximos(4));
+		v1.importeNMaximos(4);
+		assertEquals(29,v1.getImporte());
 	}
 	
 	@Test
 	void testDos() {
 		Vendedora v1= new Vendedora(new float[] {15,1,6,4,9,10}) ;
-		assertEquals(19,v1.importeNMaximos(2));
+		v1.importeNMaximos(2);
+		assertEquals(19,v1.getImporte());
 	}
 	
 	@Test
 	void testTres() {
 		Vendedora v1= new Vendedora(new float[] {15,1,6,4,9,10}) ;
-		assertEquals(15,v1.importeNMaximos(1));
+		v1.importeNMaximos(1);
+		assertEquals(15,v1.getImporte());
 	}
 	
 	@Test
 	void testCuatro() {
 		Vendedora v1= new Vendedora(new float[] {15,1,6}) ;
-		assertEquals(0,v1.importeNMaximos(4));
+		v1.importeNMaximos(4);
+		assertEquals(0,v1.getImporte());
 	}
 	
 	@Test
@@ -46,14 +50,12 @@ class pruebasVendedora {
 		
 		Vendedora[] vendedoras = {v1,v2};
 		
-		float importes[] = {0,0};
+		float impMax= price.calcularImportes(vendedoras);
 		
-		float impMax= price.calcularImportes(vendedoras, importes);
+		assertEquals(16,v1.getImporte());
+		assertEquals(16,v2.getImporte());
 		
-		assertEquals(16,importes[0]);
-		assertEquals(16,importes[1]);
-		
-		int cantidad= price.cantidadMaximos(importes, impMax);
+		int cantidad= price.cantidadMaximos(vendedoras, impMax);
 		
 		assertEquals(2, cantidad);
 		
@@ -91,36 +93,6 @@ class pruebasVendedora {
 		assertEquals(true, price.puedeHaberGanador(vendedoras));
 	}
 	
-	@Test
-	void posiciondeGanador() {
-		Premio price= new Premio(2);
-		price.setCantVendedoras(3);
-		
-		float importes[] = {64,64,80};
-		float impMax=80;
-		
-		assertEquals(2,price.buscarPosicionGanador(importes, impMax));
-	}
-	
-	@Test
-	void testParticipa() {
-		Premio price= new Premio(2);
-		price.setCantVendedoras(3);
-		
-		Vendedora v1= new Vendedora(new float[] {20,44,10}) ;
-		
-		Vendedora v2= new Vendedora(new float[] {5,7,46,18}) ;
-		
-		Vendedora v3= new Vendedora(new float[] {10,24,40,10,5}) ;
-		
-		Vendedora[] vendedoras = {v1,v2,v3};
-		float[] importes = {74,71,74};
-		float impMax = 74;
-		
-		price.cambiarParticipacion(impMax, vendedoras, importes);
-		
-		assertEquals(-1,v2.getParticipa());
-	}
 	
 	@Test
 	void CompeticionUno() { //No se puede desempatar 
@@ -134,9 +106,8 @@ class pruebasVendedora {
 //		Vendedora v3= new Vendedora(new float[] {10,24,40,10,5}) ;
 		
 		Vendedora[] vendedoras = {v1,v2};
-		float[] importes = {0,0};
 		
-		assertEquals(-2, price.buscarGanadora(vendedoras, importes));
+		assertEquals(-2, price.buscarGanadora(vendedoras));
 	}
 	
 	@Test
@@ -151,9 +122,8 @@ class pruebasVendedora {
 		Vendedora v3= new Vendedora(new float[] {10,24,40,10,5}) ;
 		
 		Vendedora[] vendedoras = {v1,v2,v3};
-		float[] importes = {0,0,0};
 		
-		assertEquals(2, price.buscarGanadora(vendedoras, importes));
+		assertEquals(2, price.buscarGanadora(vendedoras));
 	}
 
 	
@@ -167,10 +137,8 @@ class pruebasVendedora {
 		Vendedora v2= new Vendedora(new float[] {5,10,46,18}) ; //Resumen de vendedora 2
 		
 		Vendedora[] vendedoras = {v1,v2}; //Vector que contiene a todas las vendedoras
-		float[] importes = {0,0};//Vector donde se guardaran el imp maximo de cada vendedora (Posible de modificar mas adelante)
-									//Si agregamos un atributo mas a vendedora donde se aloje su importe
 		
-		assertEquals(-1, price.buscarGanadora(vendedoras, importes)); // Dado que N=6 y el resumen mas grande tiene solo 4 ventas 
+		assertEquals(-1, price.buscarGanadora(vendedoras)); // Dado que N=6 y el resumen mas grande tiene solo 4 ventas 
 																		//Nadie gana.
 	}
 }
