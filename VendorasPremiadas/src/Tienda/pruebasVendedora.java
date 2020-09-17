@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
+
 class pruebasVendedora {
 	
 	/* EL TEST COMENTADO PARA QUE SE ENTIENDAN TODOS LOS PARAMETROS ES: CompeticionTres()
-	 * ES EL ULTIMO TEST, ALGUNOS TEST SOLO COMPRUEBAN CIERTAS FUNCIONALIDADES DE ALGUNA 
+	 * ALGUNOS TEST SOLO COMPRUEBAN CIERTAS FUNCIONALIDADES DE ALGUNA 
 	 * DE LAS CLASES. */
 
 	@Test
@@ -140,5 +142,12 @@ class pruebasVendedora {
 		
 		assertEquals(-1, price.buscarGanadora(vendedoras)); // Dado que N=6 y el resumen mas grande tiene solo 4 ventas 
 																		//Nadie gana.
+	}
+	
+	@Test
+	void CasoVentas_Consecutivas_Insuficientes() {
+		
+		
+		
 	}
 }
