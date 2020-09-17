@@ -1,8 +1,6 @@
 
 public class Recorrido {
-
-	private int[] estaciones;
-
+	
 	public Recorrido() {
 		super();
 

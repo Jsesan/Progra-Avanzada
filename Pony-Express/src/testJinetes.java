@@ -6,7 +6,7 @@ class testJinetes {
 
 	@Test
 	void jinetesUno() {
-		Recorrido pp= new Recorrido();
+		Recorrido pp= new Recorrido(); 
 		assertEquals(1, pp.jinetes(new int[] {18, 15}));
 	}
 	
