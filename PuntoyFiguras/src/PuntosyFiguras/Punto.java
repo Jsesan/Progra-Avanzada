@@ -1,4 +1,4 @@
-package Circulo;
+package PuntosyFiguras;
 
 public class Punto implements Comparable<Punto> {
 	private double x;
@@ -72,7 +72,9 @@ public class Punto implements Comparable<Punto> {
 	}
 	
 	public Punto desplazar(double x, double y) {
-		return new Punto(this.x+x,this.y+y);
+		this.x+=x;
+		this.y+=y;
+		return this;
 	}
 
 	public Punto simetriaAxialEjeX() {
@@ -92,7 +94,7 @@ public class Punto implements Comparable<Punto> {
 	}
 
 	public Punto rotacionPorCualqAnguloRad(double alpha) {//El round esta mal dado que redondea al int mas cercano, aveiguar como solucionar
-		return new Punto(Math.round(this.x*Math.cos(alpha)-this.y*Math.sin(alpha)),Math.round(this.x*Math.sin(alpha)+this.y*Math.cos(alpha)));
+		return new Punto((this.x*Math.cos(alpha)-this.y*Math.sin(alpha)),Math.round(this.x*Math.sin(alpha)+this.y*Math.cos(alpha)));
 	}
 	// COMIENZAN LOS OVERRIDE
 

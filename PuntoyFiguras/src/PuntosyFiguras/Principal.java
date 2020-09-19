@@ -1,4 +1,4 @@
-package Circulo;
+package PuntosyFiguras;
 
 public class Principal {
 

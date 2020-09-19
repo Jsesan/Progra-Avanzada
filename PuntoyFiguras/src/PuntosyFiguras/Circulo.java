@@ -1,4 +1,4 @@
-package Circulo;
+package PuntosyFiguras;
 
 public class Circulo extends Punto {
 	private double radio;

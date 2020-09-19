@@ -3,7 +3,12 @@ package Tienda;
 public class Premio {
 	private int N; // N es el numero de ventas consecutivas necesarias para ganar el premio
 	private int cantVendedoras;
-
+	
+	
+	public Premio() {
+		
+	}
+	
 	public int getN() {
 		return N;
 	}
@@ -54,7 +59,7 @@ public class Premio {
 
 	public boolean puedeHaberGanador(Vendedora[] vendedoras) {
 		for (int i = 0; i < vendedoras.length; i++) {
-			if (vendedoras[i].getcantVentas() >= N)
+			if (vendedoras[i].getCantVentas() >= N)
 				return true;
 		}
 

@@ -1,33 +1,41 @@
 package Tienda;
 
+import java.util.Arrays;
+
 public class Vendedora {
 
 	private float[] resumenVentas;
 	private float importe;
 	private int cantVentas;
-	private int participa ; // Tomara 0 por defecto en caso de que
-								// esta descalificada sera -1
+	private int participa; // Tomara 0 por defecto en caso de que
+							// esta descalificada sera -1
 
 	public Vendedora(float[] resumen) {
 		this.resumenVentas = resumen;
 		this.cantVentas = resumen.length;
 		this.participa = 0;
-		this.importe= 0;
+		this.importe = 0;
 	}
-	
-	
-	
+
+	public Vendedora() {
+		
+	}
+
 	public float getImporte() {
 		return importe;
 	}
 
+	public int getCantVentas() {
+		return cantVentas;
+	}
 
+	public void setCantVentas(int cantVentas) {
+		this.cantVentas = cantVentas;
+	}
 
 	public void setImporte(float importe) {
 		this.importe = importe;
 	}
-
-
 
 	public int getParticipa() {
 		return participa;
@@ -39,10 +47,6 @@ public class Vendedora {
 
 	public float[] getResumenVenta() {
 		return resumenVentas;
-	}
-
-	public int getcantVentas() {
-		return cantVentas;
 	}
 
 	public void setResumenVenta(float[] resumenVenta) {
@@ -73,8 +77,15 @@ public class Vendedora {
 			}
 		}
 
-		this.importe= importe;
+		this.importe = importe;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Vendedora [resumenVentas=" + Arrays.toString(resumenVentas) + ", cantVentas=" + cantVentas
+				+ ", participa=" + participa + "]";
+	}
+	
+	
+	
 }
