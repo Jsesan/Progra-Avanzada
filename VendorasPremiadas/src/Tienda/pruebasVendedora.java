@@ -156,7 +156,7 @@ class pruebasVendedora {
 
 		try {
 			archivo = new File(
-					"C:\\Users\\juani\\OneDrive\\Documents\\GitHub\\Progra-Avanzada\\VendorasPremiadas\\Lote-de-Prueba_VendedorasPremiadas\\Entrada\\Verifica_Consecutivos.in");
+					"Lote-de-Prueba_VendedorasPremiadas\\Entrada\\Verifica_Consecutivos.in");
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 

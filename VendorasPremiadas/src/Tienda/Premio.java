@@ -1,5 +1,8 @@
 package Tienda;
 
+import java.util.Scanner;
+import java.io.*;
+
 public class Premio {
 	private int N; // N es el numero de ventas consecutivas necesarias para ganar el premio
 	private int cantVendedoras;
@@ -114,6 +117,28 @@ public class Premio {
 				return true;
 		}
 		return false;
+	}
+	
+	void cargarCasoDePrueba(String name, Vendedora[] vendedoras) {
+		
+		Scanner arch = null ;
+		int datoInt;
+		float datoFloat;
+		
+		try {
+			arch = new Scanner(new File("Lote-de-Prueba_VendedorasPremiadas\\Entrada\\"+name+".in"));
+			
+			datoInt = arch.nextInt(); //Leemos cantidad de participantes
+			this.setCantVendedoras(datoInt);
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+				arch.close();
+		}
 	}
 
 }
