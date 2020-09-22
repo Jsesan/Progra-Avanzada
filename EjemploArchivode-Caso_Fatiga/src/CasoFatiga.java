@@ -25,9 +25,10 @@ public class CasoFatiga {
 				for (int j = 0; j < 1000; j++) {
 					pw.println(1); // Importe de las 1000 ventas
 				}
-				pw.println(1);// El N a considerar
+				
 			}
-
+			
+			pw.println(1);// El N a considerar
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
