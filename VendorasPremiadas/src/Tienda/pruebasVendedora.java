@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
-
 class pruebasVendedora {
 
 	/*
@@ -144,64 +142,136 @@ class pruebasVendedora {
 	}
 
 	@Test
-	void verifica_Consecutivos() {
+	void caso1_verifica_Consecutivos() {
 
-		File archivo = null;
-		FileReader fr = null;
-		BufferedReader br = null;
-		String linea;
-		int x; // auxiliar de enteros
-		float f; // auxiliar de floats
-		Premio concurso = new Premio();
+		String name = "Verifica_Consecutivos";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
 
-		try {
-			archivo = new File(
-					"Lote-de-Prueba_VendedorasPremiadas\\Entrada\\Verifica_Consecutivos.in");
-			fr = new FileReader(archivo);
-			br = new BufferedReader(fr);
+		int g = competencia.buscarGanadora(vendedoras);
 
-			linea = br.readLine();
-			x = Integer.parseInt(linea); // Primera leida es cant vendedoras
-			concurso.setCantVendedoras(x);
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
 
-			Vendedora[] vendedoras = new Vendedora[x];
+	}
 
-			for (int i = 0; i < concurso.getCantVendedoras(); i++) {
+	@Test
+	void caso2_MayorImp_Sin_N_VentasConsecutivas() {
 
-				vendedoras[i] = new Vendedora();
+		String name = "MayorImp_Sin_N_VentasConsecutivas";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
 
-				linea = br.readLine();
-				x = Integer.parseInt(linea); // Cant de ventas de la vendedora i
-				vendedoras[i].setCantVentas(x);
+		int g = competencia.buscarGanadora(vendedoras);
 
-				float[] auxiliarImportes = new float[x]; // array auxiliar para guardar los importes
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
 
-				for (int j = 0; j < vendedoras[i].getCantVentas(); j++) {
+	}
 
-					linea = br.readLine();
-					f = Float.parseFloat(linea);
-					auxiliarImportes[j] = f;
+	@Test
+	void caso3_Orden_deImportes() {
 
-				}
+		String name = "Orden_deImportes";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
 
-				vendedoras[i].setResumenVenta(auxiliarImportes); // setteamos el resumen de ventas de la vendedora i
+		int g = competencia.buscarGanadora(vendedoras);
 
-			}
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
+	}
+	
+	@Test
+	void caso4_Verificacion_de_Empate() {
 
-			linea = br.readLine();
-			x = Integer.parseInt(linea);
-			concurso.setN(x);
+		String name = "Verificacion_de_Empate";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != fr) {
-					fr.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
+		int g = competencia.buscarGanadora(vendedoras);
+
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
+	}
+	
+	@Test
+	void caso5_Ventas_Consecutivas_Insuficientes() {
+
+		String name = "Ventas_Consecutivas_Insuficientes";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
+
+		int g = competencia.buscarGanadora(vendedoras);
+
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
+	}
+	
+	@Test
+	void caso6_Caso_Fatiga() { //Revisar .in pareciera estar mal
+
+		String name = "Caso_Fatiga";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
+
+		int g = competencia.buscarGanadora(vendedoras);
+
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
+	}
+	
+	@Test
+	void caso7_Cambio_de_Maximos_Consecutivos() {
+
+		String name = "Cambio_de_Maximos_Consecutivos";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
+
+		int g = competencia.buscarGanadora(vendedoras);
+
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
+	}
+	
+	@Test
+	void caso8_Tipo_de_dato_Correcto() {
+
+		String name = "Tipo_de_dato_Correcto";
+		Premio competencia = new Premio();
+		Vendedora[] vendedoras = competencia.cargarCasoDePrueba(name);
+
+		int g = competencia.buscarGanadora(vendedoras);
+
+		
+		if (g >= 0)
+			competencia.escribirSalida(name, g, vendedoras[g]);
+		else 
+			competencia.escribirSalida(name, g, null);
+		
 	}
 }

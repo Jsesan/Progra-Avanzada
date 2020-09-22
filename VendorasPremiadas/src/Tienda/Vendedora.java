@@ -1,6 +1,5 @@
 package Tienda;
 
-import java.util.Arrays;
 
 public class Vendedora {
 
@@ -80,11 +79,6 @@ public class Vendedora {
 		this.importe = importe;
 	}
 
-	@Override
-	public String toString() {
-		return "Vendedora [resumenVentas=" + Arrays.toString(resumenVentas) + ", cantVentas=" + cantVentas
-				+ ", participa=" + participa + "]";
-	}
 	
 	
 	
