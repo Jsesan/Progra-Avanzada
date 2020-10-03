@@ -1,5 +1,7 @@
 package State;
 
+import State;
+
 public class Monje {
 	private int vida;
 	private int daño;

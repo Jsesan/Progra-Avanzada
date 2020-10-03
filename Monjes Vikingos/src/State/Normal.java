@@ -1,5 +1,7 @@
 package State;
 
+import State;
+
 public class Normal implements State {
 
 	private Monje monje;

@@ -1,5 +1,7 @@
 package State;
 
+import State;
+
 public class Calmado implements State {
 
 	private Monje monje;
