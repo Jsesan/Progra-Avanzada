@@ -11,30 +11,22 @@ public class CasoFatiga {
 	}
 
 	public void GenerarCasoDeFatiga() {
-		FileWriter archivo = null;
+		FileWriter arch = null;
 		PrintWriter pw = null;
 
 		try {
-			archivo = new FileWriter(this.nombre);
-			pw = new PrintWriter(archivo);
-
-			pw.println(100); // Imprimimos cant de vendedoras
-
-			for (int i = 0; i < 100; i++) {
-				pw.println(1000); // Imprimimos cant de vendas x vendedora
-				for (int j = 0; j < 1000; j++) {
-					pw.println(1); // Importe de las 1000 ventas
-				}
-				
-			}
+			arch = new FileWriter("CasoFatiga.in");
+			pw = new PrintWriter(arch);
 			
-			pw.println(1);// El N a considerar
+			pw.println(1000);
+			for(int i=0;i<1000;i++)
+				pw.print(1+" ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (archivo != null) {
+			if (arch != null) {
 				try {
-					archivo.close();
+					arch.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
