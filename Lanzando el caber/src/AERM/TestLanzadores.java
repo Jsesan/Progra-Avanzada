@@ -40,4 +40,19 @@ class TestLanzadores {
 		Lanzador Lanzador1 = new Lanzador(lanzamientos1);
 		assertEquals(1.49, Lanzador1.getDistanciaLanzamientos());
 	}
+	
+	@Test
+	void testVarA() {
+		Lanzamiento[] lanzamientos1 = {new Lanzamiento(1.49,5.00),new Lanzamiento(1.50,3.00),new Lanzamiento(1.51,-3.00)};
+		Lanzador Lanzador1 = new Lanzador(lanzamientos1);
+		assertEquals(11.55, Lanzador1.getVarA(),0.01);
+	}
+	
+	@Test
+	void testVarD() {
+		Lanzamiento[] lanzamientos1 = {new Lanzamiento(1.49,5.00),new Lanzamiento(1.50,3.00),new Lanzamiento(1.51,-3.00)};
+		Lanzador Lanzador1 = new Lanzador(lanzamientos1);
+		assertEquals(1/15000, Lanzador1.getVarD(),0.01);
+	}
 }
+
