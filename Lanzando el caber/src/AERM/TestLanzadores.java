@@ -54,5 +54,12 @@ class TestLanzadores {
 		Lanzador Lanzador1 = new Lanzador(lanzamientos1);
 		assertEquals(1/15000, Lanzador1.getVarD(),0.01);
 	}
+	
+	@Test
+	void testModuloConsis() {
+		Lanzamiento[] lanzamientos1 = { new Lanzamiento(2.10, 6.00), new Lanzamiento(2.00, -6.00), new Lanzamiento(1.00, 2.00) };
+		Lanzador Lanzador1 = new Lanzador(lanzamientos1);
+		assertEquals(24.881216, Lanzador1.getModuloConsistencia(),0.01);
+	}
 }
 

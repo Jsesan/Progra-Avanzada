@@ -77,6 +77,10 @@ public class Lanzador {
 
 		return distancia;
 	}
+	
+	public double getModuloConsistencia() {
+		return Math.sqrt(Math.pow(varA, 2) + Math.pow(varD, 2));
+	}
 
 	public boolean isTodosValidos() {
 		return todosValidos;
