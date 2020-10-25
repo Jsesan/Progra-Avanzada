@@ -43,7 +43,6 @@ class TestCompetencia {
 		
 		Competencia competencia1 = new Competencia(competediroes1);
 		
-		competencia1.obtenerPodioCons();
 		
 		int[] podio =  competencia1.getPodioConsistencia();
 		
@@ -51,5 +50,42 @@ class TestCompetencia {
 		assertEquals(2,podio[1]);
 		assertEquals(0,podio[2]);
 	}
+	
+	
+	/*
+	 * Las de arriba fueron pruebas pre tener la clase archivo
+	 * */
+	
+	@Test
+	void testLecturaArchivo() {
+		
+		Archivo archivo = new Archivo();
+		
+		Lanzador[] competidores  = archivo.leerYCargarDatosDe("caso_enunciado");
+		
+		Competencia competencia = new Competencia(competidores);
+		
+		int[] podioConsis =  competencia.getPodioConsistencia();
+		
+		assertEquals(1,podioConsis[0]);
+		assertEquals(2,podioConsis[1]);
+		assertEquals(0,podioConsis[2]);
+	}
+	
+	@Test
+	void testEscrituraArchivo() {
+		
+		Archivo archivo = new Archivo();
+		
+		Lanzador[] competidores  = archivo.leerYCargarDatosDe("caso_enunciado");
+		
+		Competencia competencia = new Competencia(competidores);
+		
+		int[] podioConsis =  competencia.getPodioConsistencia();
+		int[] podioDist = competencia.getPodioDistancia();
+		
+		archivo.escribirResultadosEn("caso_enunciado", podioDist, podioConsis);
+	}
+	
 
 }

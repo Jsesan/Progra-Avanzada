@@ -12,7 +12,7 @@ public class Competencia {
 		this.podioConsistencia = obtenerPodioCons();
 	}
 
-	public int[] obtenerPodioCons() {
+	private int[] obtenerPodioCons() {
 
 		Lanzador[] aux = { null, null, null };
 		int[] podio = { 0, 0, 0 };

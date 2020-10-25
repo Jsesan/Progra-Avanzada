@@ -61,7 +61,7 @@ public class Lanzador {
 		return true;
 	}
 
-	public double distanciaTotal() {
+	private double distanciaTotal() {
 		double distancia = 0;
 
 		for (Lanzamiento lanzamiento : lanzamientos) {
