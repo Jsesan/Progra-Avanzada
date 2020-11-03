@@ -17,10 +17,17 @@ public class CasoFatiga {
 		try {
 			arch = new FileWriter("CasoFatiga.in");
 			pw = new PrintWriter(arch);
-			
-			pw.println(1000);
-			for(int i=0;i<1000;i++)
-				pw.print(1+" ");
+			int lanzadores = 1000000;
+			pw.println(lanzadores);
+
+			pw.println("1,49	5,00");
+			pw.println("1,49	5,00");
+			pw.println("1,49	5,00");
+			for(int i=0;i<(lanzadores*3)-3;i++) {
+				
+				pw.println("1,49	95,00");
+				}
+			System.out.print("termine");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

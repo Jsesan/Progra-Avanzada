@@ -58,7 +58,8 @@ public class Archivo {
 			pw.println();
 			
 			for (int i = 0; i < podioDist.length; i++) {
-				pw.print(podioDist[i]+" ");
+				if(podioDist[i] != 0)	
+					pw.print(podioDist[i]+" ");
 			}
 
 		} catch (Exception e) {
@@ -73,6 +74,33 @@ public class Archivo {
 			}
 
 		}
+	}
+	
+	public boolean compararSalidas(String name) {
+		
+		Scanner esperada = null;
+		Scanner obtenida = null;
+
+		try {
+			esperada = new Scanner(new File("./LotesPrueba/Salida Esperada/" + name + ".out"));
+			obtenida = new Scanner(new File("./LotesPrueba/Salida Obtenida/" + name + ".out"));
+			
+			while(esperada.hasNextLine()){
+				String valorE = esperada.nextLine(), valorO = obtenida.nextLine();
+				if(!valorE.equals(valorO))
+					return false;
+			}
+			
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			esperada.close();
+			obtenida.close();
+		}
+		
+		return false; 
 	}
 
 }
