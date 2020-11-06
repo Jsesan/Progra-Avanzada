@@ -3,11 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Graph {
+public class GraphAdjList {
 
-	private Map<Vertex, List<Vertex>> adjVertx;
+	protected Map<Vertex, List<Vertex>> adjVertx;
 
-	public Graph() {
+	public GraphAdjList() {
 		adjVertx = new HashMap<>();
 	}
 

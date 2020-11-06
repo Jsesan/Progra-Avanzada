@@ -8,16 +8,16 @@ public class WeightedEdge {
 		this.V1 = V1;
 		this.weight = 0;
 	}
-	
+
 	WeightedEdge(Vertex V1, double weight) {
 		this.V1 = V1;
 		this.weight = weight;
 	}
-	
+
 	public double getWeight() {
 		return weight;
 	}
-	
+
 	public Vertex getAdjVertex() {
 		return V1;
 	}
@@ -51,7 +51,5 @@ public class WeightedEdge {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }
