@@ -3,7 +3,7 @@ public class Vertex {
 
 	private String label;
 
-	Vertex(String label) {
+	public Vertex(String label) {
 		this.label = label;
 	}
 
@@ -35,5 +35,13 @@ public class Vertex {
 			return false;
 		return true;
 	}
+
+	public static int getId() {
+		return id;
+	}
+	
+	private static void incrementarid() {
+        id++;
+    }
 
 }

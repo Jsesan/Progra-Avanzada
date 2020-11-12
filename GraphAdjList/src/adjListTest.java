@@ -106,7 +106,8 @@ class adjListTest {
 		graph1.addEdge("Salta", "Buenos Aires", 2000);
 		graph1.addEdge("Mendoza", "Buenos Aires", 1200);
 		graph1.addEdge("Buenos Aires", "Cordoba", 500);
-
+		
+		
 		List<WeightedEdge> aux = graph1.getAdjVertices("Buenos Aires");
 
 		assertEquals(1, aux.size());
