@@ -12,32 +12,33 @@ class adjListTest {
 	void test() {
 		GraphAdjList graph1 = new GraphAdjList();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
 
-		graph1.addEdge("Salta", "Buenos Aires");
+		graph1.addEdge(0, 1);
 
-		List<Vertex> aux = graph1.getAdjVertices("Salta");
+		List<Vertex> adjDe1 = graph1.getAdjVertices(1);
 
-		assertEquals("Buenos Aires", aux.get(0).getLabel());
+		assertEquals(0, adjDe1.get(0).getId());
+
 	}
 
 	@Test
 	void test2() {
 		GraphAdjList graph1 = new GraphAdjList();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
 
-		graph1.addEdge("Salta", "Buenos Aires");
+		graph1.addEdge(0, 1);
 
-		List<Vertex> aux = graph1.getAdjVertices("Buenos Aires");
+		List<Vertex> adjDe0 = graph1.getAdjVertices(0);
 
-		assertEquals("Salta", aux.get(0).getLabel());
+		assertEquals(1, adjDe0.get(0).getId());
 	}
 
 	// No-directed and weighted Graph tests
@@ -46,14 +47,14 @@ class adjListTest {
 	void Weightedtest() {
 		WeightedGraph graph1 = new WeightedGraph();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
 
-		graph1.addEdge("Salta", "Buenos Aires");
+		graph1.addEdge(0, 1);
 
-		assertEquals(0, graph1.getAdjVertices("Salta").get(0).getWeight());
+		assertEquals(0, graph1.getAdjVertices(0).get(0).getWeight());
 
 	}
 
@@ -61,14 +62,14 @@ class adjListTest {
 	void Weightedtest2() {
 		WeightedGraph graph1 = new WeightedGraph();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
 
-		graph1.addEdge("Salta", "Buenos Aires", 1200);
+		graph1.addEdge(0, 1, 1200);
 
-		assertEquals(1200, graph1.getAdjVertices("Salta").get(0).getWeight());
+		assertEquals(1200, graph1.getAdjVertices(1).get(0).getWeight());
 
 	}
 
@@ -78,15 +79,15 @@ class adjListTest {
 	void Directedtest() {
 		DirectedGraphAdjList graph1 = new DirectedGraphAdjList();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
+		
+		graph1.addEdge(1, 0);
+		graph1.addEdge(2, 0);
 
-		graph1.addEdge("Salta", "Buenos Aires");
-		graph1.addEdge("Mendoza", "Buenos Aires");
-
-		List<Vertex> aux = graph1.getAdjVertices("Buenos Aires");
+		List<Vertex> aux = graph1.getAdjVertices(0);
 
 		assertEquals(0, aux.size());
 
@@ -98,21 +99,41 @@ class adjListTest {
 	void DirectedWeightedGraphTest() {
 		DirectedWeightedGraph graph1 = new DirectedWeightedGraph();
 
-		graph1.addVertex("Buenos Aires");
-		graph1.addVertex("Mendoza");
-		graph1.addVertex("Cordoba");
-		graph1.addVertex("Salta");
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
 
-		graph1.addEdge("Salta", "Buenos Aires", 2000);
-		graph1.addEdge("Mendoza", "Buenos Aires", 1200);
-		graph1.addEdge("Buenos Aires", "Cordoba", 500);
-		
-		
-		List<WeightedEdge> aux = graph1.getAdjVertices("Buenos Aires");
+		graph1.addEdge(1, 0, 2000);
+		graph1.addEdge(2, 0, 1200);
+		graph1.addEdge(0, 3, 500);
 
-		assertEquals(1, aux.size());
-		assertEquals(500, aux.get(0).getWeight());
-		assertEquals("Cordoba", aux.get(0).getAdjVertex().getLabel());
+		List<WeightedEdge> adjDe0 = graph1.getAdjVertices(0);
+
+		assertEquals(1, adjDe0.size());
+		assertEquals(500, adjDe0.get(0).getWeight());
+		assertEquals(3, adjDe0.get(0).getAdjVertex().getId());
+
+	}
+	
+	@Test
+	void DirectedWeightedGraphTest2() {
+		DirectedWeightedGraph graph1 = new DirectedWeightedGraph();
+
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
+
+		graph1.addEdge(1, 0, 2000);
+		graph1.addEdge(1, 2, 1200);
+		graph1.addEdge(0, 3, 500);
+
+		List<WeightedEdge> adjDe1 = graph1.getAdjVertices(1);
+
+		assertEquals(2, adjDe1.size());
+		assertEquals(1200, adjDe1.get(1).getWeight());
+		assertEquals(2, adjDe1.get(1).getAdjVertex().getId());
 
 	}
 }

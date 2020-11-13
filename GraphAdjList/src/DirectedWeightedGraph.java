@@ -6,24 +6,22 @@ public class DirectedWeightedGraph extends WeightedGraph {
 	}
 
 	@Override
-	void addEdge(String from, String to) {
+	void addEdge(int from, int to) {
 
-		Vertex v1 = new Vertex(from);
 		Vertex v2 = new Vertex(to);
 
 		WeightedEdge we1 = new WeightedEdge(v2);
 
-		adjVertx.get(v1).add(we1);
+		adjVertx.get(from).add(we1);
 
 	}
 
 	@Override
-	void addEdge(String from, String to, double weight) {
-		Vertex v1 = new Vertex(from);
+	void addEdge(int from, int to, double weight) {
 		Vertex v2 = new Vertex(to);
 		WeightedEdge we1 = new WeightedEdge(v2, weight);
 
-		adjVertx.get(v1).add(we1);
+		adjVertx.get(from).add(we1);
 
 	}
 

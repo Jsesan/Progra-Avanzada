@@ -5,46 +5,46 @@ import java.util.Map;
 
 public class GraphAdjList {
 
-	protected Map<Vertex, List<Vertex>> adjVertx;
+	protected Map<Integer, List<Vertex>> adjVertx;
 
 	public GraphAdjList() {
 		adjVertx = new HashMap<>();
 	}
 
-	public Map<Vertex, List<Vertex>> getAdjVertx() {
+	public Map<Integer, List<Vertex>> getAdjVertx() {
 		return adjVertx;
 	}
 
-	public void setAdjVertx(Map<Vertex, List<Vertex>> adjVertx) {
+	public void setAdjVertx(Map<Integer, List<Vertex>> adjVertx) {
 		this.adjVertx = adjVertx;
 	}
 
 	// add/remove methods for Vertices
 
-	void addVertex(String label) {
-		adjVertx.putIfAbsent(new Vertex(label), new ArrayList<>());
+	void addVertex(int id) {
+		adjVertx.putIfAbsent(new Integer(id), new ArrayList<>());
 	}
 
-	void removeVertex(String label) {
-		Vertex v = new Vertex(label);
+	void removeVertex(int id) {
+		Vertex v = new Vertex(id);
 		adjVertx.values().stream().forEach(e -> e.remove(v));
-		adjVertx.remove(new Vertex(label));
+		adjVertx.remove(id);
 	}
 
 	// add/remove methods for Edges
 
-	void addEdge(String label1, String label2) {
-		Vertex v1 = new Vertex(label1);
-		Vertex v2 = new Vertex(label2);
-		adjVertx.get(v1).add(v2);
-		adjVertx.get(v2).add(v1);
+	void addEdge(int id1, int id2) {
+		Vertex v1 = new Vertex(id1);
+		Vertex v2 = new Vertex(id2);
+		adjVertx.get(id1).add(v2);
+		adjVertx.get(id2).add(v1);
 	}
 
-	void removeEdge(String label1, String label2) {
-		Vertex v1 = new Vertex(label1);
-		Vertex v2 = new Vertex(label2);
-		List<Vertex> eV1 = adjVertx.get(v1);
-		List<Vertex> eV2 = adjVertx.get(v2);
+	void removeEdge(int id1, int id2) {
+		Vertex v1 = new Vertex(id1);
+		Vertex v2 = new Vertex(id2);
+		List<Vertex> eV1 = adjVertx.get(id1);
+		List<Vertex> eV2 = adjVertx.get(id2);
 		if (eV1 != null)
 			eV1.remove(v2);
 		if (eV2 != null)
@@ -53,7 +53,7 @@ public class GraphAdjList {
 
 	// get the adjacent vertices of a particular vertex
 
-	List<Vertex> getAdjVertices(String label) {
-		return adjVertx.get(new Vertex(label));
+	List<Vertex> getAdjVertices(int id) {
+		return adjVertx.get(id);
 	}
 }

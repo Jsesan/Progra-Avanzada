@@ -7,17 +7,15 @@ public class DirectedGraphAdjList extends GraphAdjList {
 	}
 
 	@Override
-	void addEdge(String from, String to) {
-		Vertex v1 = new Vertex(from);
+	void addEdge(int from, int to) {
 		Vertex v2 = new Vertex(to);
-		adjVertx.get(v1).add(v2);
+		adjVertx.get(from).add(v2);
 	}
 
 	@Override
-	void removeEdge(String from, String to) {
-		Vertex v1 = new Vertex(from);
+	void removeEdge(int from, int to) {
 		Vertex v2 = new Vertex(to);
-		List<Vertex> eV1 = adjVertx.get(v1);
+		List<Vertex> eV1 = adjVertx.get(from);
 		if (eV1 != null)
 			eV1.remove(v2);
 	}
