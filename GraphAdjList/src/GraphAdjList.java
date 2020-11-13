@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +21,6 @@ public class GraphAdjList {
 		this.adjVertx = adjVertx;
 	}
 
-	// add/remove methods for Vertices
 
 	void addVertex(int id) {
 		adjVertx.putIfAbsent(new Integer(id), new ArrayList<>());
@@ -31,7 +32,6 @@ public class GraphAdjList {
 		adjVertx.remove(id);
 	}
 
-	// add/remove methods for Edges
 
 	void addEdge(int id1, int id2) {
 		Vertex v1 = new Vertex(id1);
@@ -51,9 +51,69 @@ public class GraphAdjList {
 			eV2.remove(v1);
 	}
 
-	// get the adjacent vertices of a particular vertex
 
 	List<Vertex> getAdjVertices(int id) {
 		return adjVertx.get(id);
+	}
+	
+	
+	int[] DFS(int v) {
+		boolean visited[] = new boolean[this.adjVertx.size()];
+		int recorrido[] = new int[this.adjVertx.size()];
+		int j = 0;
+		
+		DFSUtil(new Vertex(v), visited, recorrido, j);
+
+		return recorrido;
+	}
+	
+	void DFSUtil(Vertex v, boolean visited[], int recorrido[], int j) {
+		
+		visited[v.getId()] = true;
+		recorrido[j] = v.getId();
+
+		
+		Iterator<Vertex> i = getAdjVertices(v.getId()).listIterator();
+		while (i.hasNext()) {
+			Vertex prox = i.next();
+			if (!visited[prox.getId()]) {
+				j++;
+				DFSUtil(prox, visited, recorrido, j);
+			}
+		}
+	}
+
+	
+	int[] BFS(int v) {
+		
+		int visited[] = new int[this.adjVertx.size()];
+
+		for (int i = 0; i < this.adjVertx.size(); i++)
+			visited[i] = Integer.MAX_VALUE;
+
+		
+		LinkedList<Integer> queue = new LinkedList<Integer>();
+
+		
+		int distancia = 0;
+		visited[v] = 0;
+		queue.add(v);
+
+		while (queue.size() != 0) {
+			
+			v = queue.poll();
+
+			Iterator<Vertex> i = getAdjVertices(v).listIterator();
+			distancia++;
+			while (i.hasNext()) {
+				int n = i.next().getId();
+				if (visited[n] == Integer.MAX_VALUE) {
+					visited[n] = distancia;
+					queue.add(n);
+				}
+			}
+		}
+
+		return visited;
 	}
 }

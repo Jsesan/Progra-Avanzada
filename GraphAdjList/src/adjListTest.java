@@ -136,4 +136,68 @@ class adjListTest {
 		assertEquals(2, adjDe1.get(1).getAdjVertex().getId());
 
 	}
+	
+	@Test
+	void DFStest() {
+		GraphAdjList graph1 = new GraphAdjList();
+
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
+
+		graph1.addEdge(0,3);
+		graph1.addEdge(3,1);
+		graph1.addEdge(1,2);
+		
+		int recorrido[] = graph1.DFS(0);
+		
+		assertEquals(0, recorrido[0]);
+		assertEquals(3, recorrido[1]);
+		assertEquals(1, recorrido[2]);
+		assertEquals(2, recorrido[3]);
+	}
+	
+	@Test
+	void BFStest() {
+		GraphAdjList graph1 = new GraphAdjList();
+
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
+
+		graph1.addEdge(0,3);
+		graph1.addEdge(3,1);
+		graph1.addEdge(1,2);
+		
+		int distanciasDesde0[] = graph1.BFS(0);
+		
+		assertEquals(0, distanciasDesde0[0]);
+		assertEquals(2, distanciasDesde0[1]);
+		assertEquals(3, distanciasDesde0[2]);
+		assertEquals(1, distanciasDesde0[3]);
+	}
+	
+	@Test
+	void WeightedDFStest() {
+		WeightedGraph graph1 = new WeightedGraph();
+
+		graph1.addVertex(0);
+		graph1.addVertex(1);
+		graph1.addVertex(2);
+		graph1.addVertex(3);
+
+		graph1.addEdge(0,3,1200);
+		graph1.addEdge(3,1,500);
+		graph1.addEdge(1,2,600);
+
+		int [] recorridoDesde = graph1.DFS(0);
+		
+		assertEquals(0, recorridoDesde[0]);
+		assertEquals(3, recorridoDesde[1]);
+		assertEquals(1, recorridoDesde[2]);
+		assertEquals(2, recorridoDesde[3]);
+
+	}
 }
